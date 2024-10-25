@@ -3,6 +3,7 @@ import { api } from '@/data/api'
 import { Product } from '@/data/types/product'
 import { Metadata } from 'next'
 import Image from 'next/image'
+import AddToCartButton from '../../../components/add-to-cart-button'
 
 interface ProductParamsProps {
   params: Promise<{
@@ -25,6 +26,14 @@ export async function generateMetadata({
   return {
     title: product.title,
   }
+}
+
+export async function generateStaticParams() {
+  const response = await api('/products/featured')
+  const products: Product[] = await response.json()
+  return products.map((product) => {
+    return { slug: product.slug }
+  })
 }
 
 const ProductPage = async ({ params }: ProductParamsProps) => {
@@ -93,12 +102,7 @@ const ProductPage = async ({ params }: ProductParamsProps) => {
           </div>
         </div>
 
-        <button
-          type="button"
-          className="mt-8 flex justify-center items-center h-12 rounded-full bg-emerald-600 font-semibold text-white"
-        >
-          Adicionar ao carrinho
-        </button>
+        <AddToCartButton productId={product.id} />
       </div>
     </div>
   )
