@@ -15,3 +15,5 @@ export async function GET(_: Request, { params }: ProductParamsProps) {
   }
   return Response.json(product)
 }
+
+export const dynamic = 'force-static'
