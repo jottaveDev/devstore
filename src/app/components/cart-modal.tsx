@@ -23,7 +23,7 @@ const CartModal = ({ items, handleModal }: CartModalProps) => {
   return (
     <div
       ref={modalRef}
-      className="absolute right-0 top-10 bg-zinc-100 w-[350px] h-[800px] z-50 rounded-lg flex flex-col"
+      className="absolute right-0 top-10 bg-zinc-100 w-[400px] h-[850px] z-50 rounded-lg flex flex-col"
     >
       <div className="flex items-center justify-between p-4">
         <p className="text-2xl font-bold text-zinc-900">Meu Carrinho</p>

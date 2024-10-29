@@ -1,18 +1,36 @@
 'use client'
 
 import { Product } from '@/data/types/product'
-import { createContext, ReactNode, useContext, useState } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 import { CartItem } from '../types/cart'
 
 interface CartContextType {
   items: CartItem[]
   addToCart: (product: Product, size: string) => void
+  deleteToCart: (product: Product) => void
 }
 
 const CartContext = createContext({} as CartContextType)
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cartItems')
+    if (storedCart) {
+      setCartItems(JSON.parse(storedCart))
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems))
+  }, [cartItems])
 
   const updateItemQuantity = (item: CartItem, size: string) => {
     return {
@@ -62,8 +80,16 @@ export function CartProvider({ children }: { children: ReactNode }) {
     })
   }
 
+  const deleteToCart = (product: Product) => {
+    const productsFilter = cartItems.filter(
+      (item) => item.product.id !== product.id,
+    )
+    setCartItems(productsFilter)
+    localStorage.setItem('cartItems', JSON.stringify(productsFilter))
+  }
+
   return (
-    <CartContext.Provider value={{ items: cartItems, addToCart }}>
+    <CartContext.Provider value={{ items: cartItems, addToCart, deleteToCart }}>
       {children}
     </CartContext.Provider>
   )
