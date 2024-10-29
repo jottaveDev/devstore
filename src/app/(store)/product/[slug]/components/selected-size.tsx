@@ -18,7 +18,8 @@ const SelectedSize = ({ product }: { product: Product }) => {
         {sizes.map((size) => (
           <button
             key={size}
-            className={`flex items-center justify-center h-9 w-14 rounded-full border border-zinc-700 bg-zinc-800 text-sm font-semibold  ${selectedSize === size ? 'bg-zinc-600' : 'bg-zinc-800'}`}
+            className={`flex items-center justify-center h-9 w-14 rounded-full border border-zinc-700 text-sm font-semibold  
+            ${selectedSize === size ? 'bg-zinc-600' : 'bg-zinc-800'}`}
             onClick={() => handleClickSize(size)}
           >
             <input type="radio" name="size" value={size} className="hidden" />
@@ -26,6 +27,7 @@ const SelectedSize = ({ product }: { product: Product }) => {
           </button>
         ))}
       </div>
+
       <AddToCartButton
         product={product}
         selectedSize={selectedSize}
