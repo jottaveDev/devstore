@@ -3,7 +3,7 @@ import { api } from '@/data/api'
 import { Product } from '@/data/types/product'
 import { Metadata } from 'next'
 import Image from 'next/image'
-import AddToCartButton from '../../../components/add-to-cart-button'
+import SelectedSize from './components/selected-size'
 
 interface ProductParamsProps {
   params: Promise<{
@@ -74,35 +74,8 @@ const ProductPage = async ({ params }: ProductParamsProps) => {
 
         <div className="mt-8 space-y-4">
           <span className="block font-semibold">Tamanhos</span>
-          <div className="flex gap-2">
-            <button
-              type="button"
-              className="flex items-center justify-center h-9 w-14 rounded-full border border-zinc-700 bg-zinc-800 text-sm font-semibold"
-            >
-              P
-            </button>
-            <button
-              type="button"
-              className="flex items-center justify-center h-9 w-14 rounded-full border border-zinc-700 bg-zinc-800 text-sm font-semibold"
-            >
-              M
-            </button>
-            <button
-              type="button"
-              className="flex items-center justify-center h-9 w-14 rounded-full border border-zinc-700 bg-zinc-800 text-sm font-semibold"
-            >
-              G
-            </button>
-            <button
-              type="button"
-              className="flex items-center justify-center h-9 w-14 rounded-full border border-zinc-700 bg-zinc-800 text-sm font-semibold"
-            >
-              GG
-            </button>
-          </div>
+          <SelectedSize product={product} />
         </div>
-
-        <AddToCartButton productId={product.id} />
       </div>
     </div>
   )
