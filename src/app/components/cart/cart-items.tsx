@@ -1,8 +1,8 @@
 import { Trash } from 'lucide-react'
-import { useCart } from '../contexts/cart-context'
-import { CartItem } from '../types/cart'
-import { convertPriceToBRL } from '../utils/convertPrice'
-import { formatCartItem } from '../utils/format-cart-items'
+import { useCart } from '../../contexts/cart-context'
+import { CartItem } from '../../types/cart'
+import { convertPriceToBRL } from '../../utils/convertPrice'
+import { formatCartItem } from '../../utils/format-cart-items'
 
 const CartItems = ({ items }: { items: CartItem[] }) => {
   const { deleteToCart } = useCart()

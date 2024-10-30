@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { CartItem } from '../types/cart'
+import { CartItem } from '../../types/cart'
 import CartItems from './cart-items'
 
 interface CartModalProps {

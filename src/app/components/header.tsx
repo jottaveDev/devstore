@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import CartWidget from './cartWidget'
+import CartWidget from './cart/cartWidget'
 import { SearchForm } from './search-form'
 
 const Header = () => {

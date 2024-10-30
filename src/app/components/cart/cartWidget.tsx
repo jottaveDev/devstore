@@ -2,7 +2,7 @@
 
 import { ShoppingBag } from 'lucide-react'
 import { useState } from 'react'
-import { useCart } from '../contexts/cart-context'
+import { useCart } from '../../contexts/cart-context'
 import CartModal from './cart-modal'
 
 const CartWidget = () => {
