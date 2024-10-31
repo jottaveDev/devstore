@@ -1,14 +1,16 @@
 import { convertPriceToBRL } from '@/app/utils/convertPrice'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Suspense } from 'react'
+import CurrentSearch from './components/current-search'
 import { SearchViewProps } from './search.types'
 
-export default function SearchView({ products, query }: SearchViewProps) {
+export default function SearchView({ products }: SearchViewProps) {
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-sm">
-        Resultados para: <span className="font-semibold">{query}</span>
-      </p>
+      <Suspense>
+        <CurrentSearch />
+      </Suspense>
 
       <div className="grid grid-cols-3 gap-6">
         {products.map((product) => (
