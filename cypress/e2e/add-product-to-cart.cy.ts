@@ -1,6 +1,6 @@
 describe('Cart', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   it('should open cart modal', () => {
@@ -42,7 +42,7 @@ describe('Cart', () => {
   })
 
   it('should be able to search for a product and add it to the cart', () => {
-    cy.get('input[name=q]').type('moletom').parent('form').submit()
+    cy.searchByQuery('moletom')
 
     cy.get('a[href^="/product"]').first().click()
     cy.location('pathname').should('include', '/product')
